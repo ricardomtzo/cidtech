@@ -8,6 +8,7 @@ import { FooterButtons } from './buttons/FooterButtons';
 import { TextFieldCustom } from './inputs/TextField';
 import { CardDefault } from './cards/CardDefault';
 import { TablePurchses } from './tables/TablePurchses';
+import { SelectInput } from './inputs/SelecInput';
 
 export {
     Container,
@@ -19,5 +20,6 @@ export {
     FooterButtons,
     TextFieldCustom,
     CardDefault,
-    TablePurchses
+    TablePurchses,
+    SelectInput
 };

@@ -1,9 +1,9 @@
 "use client";
 import * as React from 'react';
 
-import { CardDefault, Col, P, Row, TablePurchses, TextFieldCustom } from '@/components';
+import { CardDefault, Col, P, Row, SelectInput, TextFieldCustom } from '@/components';
 import { theme } from '@/const/theme';
-import { Breadcrumbs, Button, Link } from '@mui/material';
+import { Breadcrumbs, Button, Link, Switch } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { CalendarTodayOutlined, LocationOnOutlined } from '@mui/icons-material';
 
@@ -20,18 +20,47 @@ export default function PurchsesDetails({ }) {
                         day="9 ago 2023 à 11 ago 2023"
                         location="Rio de Janeiro - RJ" />
 
-                    <P fontWeight={600} fontSize={24} my={spaceXXL}>Resumo do pedido #220830</P>
+                    <P size='xxlarge' bold my={spaceL}>Preencha o(s) dado(s) do(s) participante(s)</P>
                 </Col>
 
                 <Row container spacing={spaceL} xl={8} sx={{ alignItems: 'flex-start' }} item>
                     <Col xs={12} md={6} lg={8} xl={8} item>
                         <CardDefault>
-                            {fields.map((field, i) => (
+                            <Col xl={12} item>
+                                <P bold size='large' mt={spaceXL}>Ingresso 1: Título do ingresso</P>
+                                <P mt={spaceL}>Este ingresso é meu <Switch defaultChecked /></P>
+                            </Col>
+                            <Row container sx={{ justifyContent: 'space-between' }}>
+                                {fields.map((field, i) => (
+                                    <Col key={'tkF' + i} lg={field?.size} xl={field?.size} item>
+                                        {field?.type === 'select' ?
+                                            <SelectInput label={field?.label} />
+                                            :
+                                            <Col>
+                                                <TextFieldCustom
+                                                    label={field?.label}
+                                                    labelAdornment={field?.labelAdornment || ''}
+                                                    type={field?.type} /></Col>}
+                                    </Col>
+                                ))}
                                 <Col>
-                                    {field?.title && <P bold mt={spaceXL}>{field.title}</P>}
-                                    <TextFieldCustom {...field} />
+                                    <P>
+                                        <span
+                                            style={{
+                                                width: 12,
+                                                height: 12,
+                                                backgroundColor: 'green',
+                                                border: '5px  solid green',
+                                                borderRadius: 50,
+                                                fontSize: 8,
+                                                color: 'green'
+                                            }} > aa</span> Completo
+                                         
+                                    </P>
                                 </Col>
-                            ))}
+
+                            </Row>
+
                         </CardDefault>
 
                         <Col>
@@ -98,7 +127,7 @@ const TicketsList = () => {
 const HeaderEvent = ({ title, day, location }: { title: string, day: string, location: string }) => {
     return (
         <Col>
-            <P fontWeight={600} fontSize={24} mb={spaceM}>{title}</P>
+            <P size='xxlarge' bold mb={spaceM}>{title}</P>
             <Row sx={{ justifyContent: 'flex-start' }}>
                 <P mr={spaceS} mt={0.5}><CalendarTodayOutlined fontSize='small' /></P>
                 <P>{day}</P>
@@ -121,7 +150,7 @@ function BreadcrumbsList({ list }: { list: string[] }) {
         </P>)
 
     return (
-        <Col spacing={2}>
+        <Col spacing={2} mb={spaceXL}>
             <Breadcrumbs
                 separator={<NavigateNextIcon style={{ color: '#384C8C' }} fontSize="small" />}
                 aria-label="breadcrumb"
@@ -147,25 +176,54 @@ const { spaces: { spaceM, spaceS, spaceL, spaceXXL, spaceXXXL, spaceXL } } = the
 
 const fields = [
     {
-        title: 'RESPONSÁVEL  PELA INSCRIÇÃO',
-        labelAdornment: 'Nome completo',
+
+        label: 'Copiar informações',
+        labelAdornment: '',
         placeholder: '',
-        type: 'text',
+        type: 'select',
+        size: 12
     },
     {
-        labelAdornment: 'Empresa',
+        label: 'CPF',
         placeholder: '',
         type: 'text',
+        size: 5
     },
     {
-        labelAdornment: 'Email',
+        label: 'Email',
         placeholder: '',
         type: 'text',
+        size: 6
     },
     {
-        labelAdornment: 'Endereço',
+        label: 'Tratamento',
+        placeholder: '',
+        type: 'select',
+        size: 3
+    },
+    {
+        label: 'Nome',
         placeholder: '',
         type: 'text',
+        size: 4
+    },
+    {
+        label: 'Sobrenome',
+        placeholder: '',
+        type: 'text',
+        size: 4
+    },
+    {
+        label: 'Empresa',
+        placeholder: '',
+        type: 'text',
+        size: 4
+    },
+    {
+        label: 'Cargo',
+        placeholder: '',
+        type: 'text',
+        size: 4,
         noBorder: true
     },
 ]

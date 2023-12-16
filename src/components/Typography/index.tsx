@@ -21,6 +21,7 @@ type PProps = {
 }
 
 const sizes: any = {
+    xxlarge: '26px',
     xlarge: '24px',
     large: '20px',
     medium: '16px',

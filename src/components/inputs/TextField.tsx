@@ -23,6 +23,7 @@ export const TextFieldCustom = (props: TextFieldCustomProps & TextFieldProps) =>
 }
 
 type TextFieldCustomProps = {
+    label?: string
     labelAdornment?: string
     variant?: string,
     margin?: string
