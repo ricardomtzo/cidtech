@@ -9,17 +9,22 @@ type FooterButtonsProps = {
     }
     cancel?: {
         text: string
+        onClick?: () => void
     }
 }
 export const FooterButtons = ({ confirm, cancel, }: FooterButtonsProps) => {
     const iconRight = confirm?.iconRight;
     return (
         <Row container marginY={2} mb={12} sx={{ justifyContent: 'flex-end' }}>
-            {cancel?.text && <Button style={{ marginRight: 12 }} variant="outlined">CANCELAR</Button>}
-            {confirm?.text && 
-            <Button 
-            variant="contained"
-            onClick={confirm?.onClick}>{confirm.text} {iconRight}</Button>}
+            {cancel?.text &&
+                <Button
+                    style={{ marginRight: 12 }}
+                    variant="outlined"
+                    onClick={cancel?.onClick}>{cancel.text}</Button>}
+            {confirm?.text &&
+                <Button
+                    variant="contained"
+                    onClick={confirm?.onClick}>{confirm.text} {iconRight}</Button>}
         </Row>
     )
 }

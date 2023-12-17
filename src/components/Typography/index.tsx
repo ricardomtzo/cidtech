@@ -36,9 +36,7 @@ const titleStyle = {
 }
 export const P = ({ children, color, vTitle, bold, center, size, ...props }: PProps & TypographyProps) => {
 
-    let totalStyles: any = {
-        
-    };
+    let totalStyles: any = { };
 
     if(size) {
         totalStyles.fontSize = sizes[size];

@@ -22,9 +22,11 @@ export  const SelectInput = ({ label }: SelectInputProps & SelectProps) => {
           value={age}
           onChange={handleChange}
           label="asdasds"
+          placeholder='Selecione'
+          defaultValue='0'
         >
-          <MenuItem value="">
-            <em>None</em>
+          <MenuItem selected value="0">
+            <em style={{ color: 'grey' }}>Selecione caso necessário</em>
           </MenuItem>
           <MenuItem value={10}>Ten</MenuItem>
           <MenuItem value={20}>Twenty</MenuItem>
