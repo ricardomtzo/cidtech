@@ -14,6 +14,7 @@ import { HeaderEvent } from './event/HeaderEvent';
 import { BreadcrumbsList } from './event/BreadcrumbsList';
 import { Divider } from './event/Divider';
 import { RadioInput } from './radioInput/RadioInput';
+import MenuProfile from './menu/MenuProfile';
 
 export {
     Container,
@@ -31,5 +32,6 @@ export {
     HeaderEvent,
     BreadcrumbsList,
     Divider,
-    RadioInput
+    RadioInput,
+    MenuProfile
 };

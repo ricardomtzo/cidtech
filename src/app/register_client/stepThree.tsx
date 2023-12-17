@@ -4,6 +4,7 @@ import { CardDefault, Col, P, Row, SelectInput, TextFieldCustom } from '@/compon
 import { theme } from '@/const/theme';
 import { StepsRounded } from '@/components/steps/StepsRounded';
 import { Checkbox, Divider, FormControlLabel } from '@mui/material';
+import Link from 'next/link';
 
 export default function RegisterStepThree({ nextStep }: { nextStep: React.Dispatch<React.SetStateAction<number>> }) {
 
@@ -13,7 +14,7 @@ export default function RegisterStepThree({ nextStep }: { nextStep: React.Dispat
             footerButtons={{
                 confirm: {
                     text: 'AVANÇAR',
-                    onClick: () => nextStep(steps => steps + 1)
+                    onClick: () => location.href = 'dashboard/tickets'
                 },
                 cancel: {
                     text: 'VOLTAR',

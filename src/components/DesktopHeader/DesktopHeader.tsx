@@ -1,18 +1,23 @@
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
+import { MenuProfile, Row } from '..';
 
 
-export const DesktopHeader = ({ logo}: { logo : string}) => {
+export const DesktopHeader = ({ logo }: { logo: string }) => {
 
     return (
-       <DesktopHeaderStyled>
-            <Logo src={logo} alt="Logoo" />
-       </DesktopHeaderStyled>
+        <DesktopHeaderStyled>
+            <Row sx={{ justifyContent: 'space-between' }}>
+                <Logo src={logo} alt="Logoo" />
+                <MenuProfile />
+            </Row>
+
+        </DesktopHeaderStyled>
     );
 };
 
 const DesktopHeaderStyled = styled(Stack)`
-    background-color: ${({ theme } : { theme: any }) => theme.palette.primary.default};
+    background-color: ${({ theme }: { theme: any }) => theme.palette.primary.default};
     height: 85px;
     margin-bottom: 10px;
 `;
