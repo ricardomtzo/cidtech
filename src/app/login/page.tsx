@@ -6,7 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { Stack } from '@mui/material';
+import { Link, Stack } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import FilledInput from '@mui/material/FilledInput';
 import FormControl from '@mui/material/FormControl';
@@ -17,8 +17,18 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 
 
 import headerImage from "../../assets/images/bg_card.png"
+import { Col, HeaderEvent, P } from '@/components';
 
 export default function Login({ }) {
+    const [steps, setSteps] = React.useState(1);
+
+    const onNextStep = () => {
+        if(steps < 2){
+            setSteps(steps + 1)
+        }else{
+            location.href = '/dashboard/tickets'
+        }
+    }
 
     return (
         <Stack alignItems={"center"}>
@@ -30,36 +40,53 @@ export default function Login({ }) {
                 />
                 <CardContent>
                     <Stack padding={4}>
-                        <Typography gutterBottom variant="h5" component="div">
-                            Bienal do livro 2023
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            9 ago 2023 à 11 ago 2023
-                        </Typography>
-                        <Typography mb={4} variant="body2" color="text.secondary">
-                            Guatapará - Ribeirão Preto / SP
-                        </Typography>
-                        <Typography mb={'16px'} variant="h6">
-                            Para começar digite o seu e-mail
-                        </Typography>
-                        <FormControl variant="standard">
-                            <InputLabel htmlFor="component-helper">E-mail</InputLabel>
-                            <Input
-                                placeholder="Digite seu e-mail"
-                                defaultValue=""
-                                aria-describedby="component-helper-text"
-                            />
-                            <FormHelperText id="component-helper-text">
-                                Some important helper text
-                            </FormHelperText>
-                        </FormControl>
+                        <HeaderEvent title="Bienal do livro 2023 " day='9 ago 2023 a 11 ago 2023' location='Guatapár - Ribeirão Preto / SP' />
+                        {steps === 1 && <Col>
+                            <P bold size='large' mt={4} mb={3}>
+                                Para começar digite o seu e-mail
+                            </P>
+                            <FormControl variant="standard">
+                                <InputLabel htmlFor="component-helper">E-mail</InputLabel>
+                                <Input
+                                    placeholder="Digite seu e-mail"
+                                    defaultValue=""
+                                    aria-describedby="component-helper-text"
+                                />
+                                <FormHelperText id="component-helper-text">
+
+                                </FormHelperText>
+                            </FormControl>
+                        </Col>}
+
+                        {steps === 2 && <Col>
+                            <P bold mt={4} mb={3}>
+                                Olá, maria@mail.com, digite a sua senha <P size='small'>(Não é você?)</P>
+                            </P>
+                            <FormControl variant="standard">
+                                <InputLabel htmlFor="component-helper">Senha</InputLabel>
+                                <Input
+                                    placeholder="Digite sua senha"
+                                    defaultValue="566546545"
+                                    type="password"
+                                    aria-describedby="component-helper-text"
+                                />
+                                <FormHelperText id="component-helper-text">
+
+                                </FormHelperText>
+                            </FormControl>
+                        </Col>}
+
+                        <Link href="/forgot-password" fontSize={14} mt={2} underline="none">Esqueci a senha</Link>
                     </Stack>
                     <Stack padding={2}>
-                        <Button fullWidth variant="contained">Avançar</Button>
+                        <Button
+                            fullWidth
+                            variant="contained"
+                            onClick={() => onNextStep()}>Avançar</Button>
                     </Stack>
                 </CardContent>
                 <CardActions>
-                    
+
                 </CardActions>
             </Card>
         </Stack>

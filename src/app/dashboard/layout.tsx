@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <ThemeProvider theme={theme}>
       <Container>
-        <DesktopHeader logo={logoInverted.src} />
+        <DesktopHeader logo={logoInverted.src} menu />
         <div className={inter.className}>{children}</div>
         <DesktopFooter logo={logo.src} type='secondary'/>
       </Container>

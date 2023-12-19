@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import { Alert, Avatar, Box, CardActionArea, Divider, InputAdornment, ListItem, ListItemText, } from '@mui/material';
 import TextField from '@mui/material/TextField';
 
-import { Col, P, Row } from '@/components';
+import { CardDefault, Col, HeaderEvent, P, Row } from '@/components';
 import { theme } from '@/const/theme';
 import logo from '../../../assets/images/bg_card.png'
 import { ArrowForward, CalendarMonth, ChevronRight, ClosedCaption, InfoRounded, LocationOnOutlined } from '@mui/icons-material';
@@ -28,11 +28,9 @@ export default function Login({ }) {
             <Col xs={12} md={2} lg={6} xl={6}>
                 <EventImage src={logo.src} alt="logo" />
                 <Col padding={spaceL}>
-                    <P variant="h5" bold mt={spaceL}>Bienal do livro 2023</P>
-                    <P variant="body2" mt={spaceL} ><CalendarMonth fontSize='small' color='primary' /> 9 ago 2023 à 11 ago 2023</P>
-                    <P variant="body2" mt={spaceL} ><LocationOnOutlined fontSize='small' color='primary' /> Rio de Janeiro - RJ</P>
+                    <HeaderEvent title="Bienal do livro 2023 " day='9 ago 2023 a 11 ago 2023' location='Guatapár - Ribeirão Preto / SP' />
                     <Col padding={spaceL}>
-                        <P variant="h5" bold mt={spaceXXXL}>Novo Pedido</P>
+                        <P variant="h5" bold mt={spaceXXL}>Novo Pedido</P>
                         <P variant="body2" mt={spaceL}>Tem um código promocional?</P>
                         <Row container sx={{ justifyContent: 'flex-start' }}>
                             <Col xs={8} md={6} lg={6} xl={6} mr={spaceL} item>
@@ -53,18 +51,15 @@ export default function Login({ }) {
 
                     </Col>
                     <Col>
-                        <Card>
-                            <CardContent>
-                                <Col padding={spaceL}>
-                                    <P variant="h6" bold mb={spaceL}>Selecione o(s) ingresso(s) desejado(s)</P>
-                                    <TicketTable />
-                                </Col>
-                            </CardContent>
-                        </Card>
+                        <CardDefault>
+                            <P variant="h6" bold mb={spaceL}>Selecione o(s) ingresso(s) desejado(s)</P>
+                            <TicketTable />
+                        </CardDefault>
                         <FooterButtons
                             confirm={{
                                 text: 'Avançar',
-                                iconRight: <ChevronRight />
+                                iconRight: <ChevronRight />,
+                                onClick:()=> location.href = '/dashboard/purchses-register'
                             }}
                         />
                     </Col>
@@ -77,7 +72,7 @@ export default function Login({ }) {
 };
 
 
-const { spaces: { spaceL, spaceXXXL, spaceM, spaceS }, palette: { primary } } = theme;
+const { spaces: { spaceL, spaceXXL, spaceM, spaceS }, palette: { primary } } = theme;
 
 const EventImage = ({ src, alt }: { src: string, alt: string }) => {
 

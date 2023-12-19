@@ -13,11 +13,11 @@ export default function ForgotPassword({ }) {
                     footerButtons={{
                         confirm: {
                             text: 'ENVIAR',
-                            //onClick: () => nextStep(steps => steps + 1)
+                            onClick: () => location.href = '/recovery-password'
                         },
                         cancel: {
                             text: 'VOLTAR',
-                            //onClick: () => nextStep(steps => steps - 1)
+                            onClick: () => location.href = '/login'
                         }
                     }}>
 

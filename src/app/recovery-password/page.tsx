@@ -13,7 +13,7 @@ export default function RecoverytPassword({ }) {
                     footerButtons={{
                         confirm: {
                             text: 'SALVAR',
-                            //onClick: () => nextStep(steps => steps + 1)
+                            onClick: () => location.href = '/login'
                         },
                     }}>
 

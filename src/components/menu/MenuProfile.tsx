@@ -49,6 +49,10 @@ export default function MenuProfile() {
         prevOpen.current = open;
     }, [open]);
 
+    const onClickMenu = (href: string) => {
+        location.href = '/dashboard/' + href
+    }
+
     return (
         <Stack direction="row" mr={10} spacing={2} zIndex={99999} >
 
@@ -92,15 +96,15 @@ export default function MenuProfile() {
                                         onKeyDown={handleListKeyDown}
                                     >
                                         <P size='xsmall' bold p={1} color={'#A0A8A3'}>Painel de controle</P>
-                                        <MenuItem onClick={handleClose}><CardTravel fontSize='small' /><P ml={2} size='small'>Novo pedido</P></MenuItem>
-                                        <MenuItem onClick={handleClose}><CardTravel fontSize='small' /><P ml={2} size='small'>Meus pedidos</P></MenuItem>
-                                        <MenuItem onClick={handleClose}><PersonOutline fontSize='small' /><P ml={2} size='small'>Meus dados</P></MenuItem>
-                                        <MenuItem onClick={handleClose}><CardTravel fontSize='small' /><P ml={2} size='small'>Credencial</P></MenuItem>
+                                        <MenuItem onClick={() => onClickMenu('tickets')}><CardTravel fontSize='small' /><P ml={2} size='small'>Novo pedido</P></MenuItem>
+                                        <MenuItem onClick={() => onClickMenu('purchses')}><CardTravel fontSize='small' /><P ml={2} size='small'>Meus pedidos</P></MenuItem>
+                                        <MenuItem onClick={() => onClickMenu('profile')}><PersonOutline fontSize='small' /><P ml={2} size='small'>Meus dados</P></MenuItem>
+                                        <MenuItem onClick={() => onClickMenu('tickets')}><CardTravel fontSize='small' /><P ml={2} size='small'>Credencial</P></MenuItem>
                                         <Col style={{ width: '100%', height: 1, backgroundColor: '#E5E5E5', marginTop: 20 }} />
                                         <P size='xsmall' bold p={1} color={'#A0A8A3'}>Pós evento</P>
-                                        <MenuItem onClick={handleClose}><DocumentScannerSharp fontSize='small' /><P ml={2} size='small'>Certificado</P></MenuItem>
-                                        <MenuItem onClick={handleClose}><PlayLesson fontSize='small' /><P ml={2} size='small'>Apresentação</P></MenuItem>
-                                        <MenuItem onClick={handleClose}><Logout fontSize='small' /><P ml={2} size='small'>Sair</P></MenuItem>
+                                        <MenuItem onClick={() => onClickMenu('tickets')}><DocumentScannerSharp fontSize='small' /><P ml={2} size='small'>Certificado</P></MenuItem>
+                                        <MenuItem onClick={() => onClickMenu('tickets')}><PlayLesson fontSize='small' /><P ml={2} size='small'>Apresentação</P></MenuItem>
+                                        <MenuItem onClick={() => location.href = '/login'}><Logout fontSize='small' /><P ml={2} size='small'>Sair</P></MenuItem>
                                     </MenuList>
                                 </ClickAwayListener>
                             </Paper>
